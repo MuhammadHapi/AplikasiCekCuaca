@@ -25,7 +25,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
      */
     public FormCekCuaca() {
         initComponents();
-        jComboBox1.addItem("Pilih Kota");
+        comboFavorit.addItem("Pilih Kota");
     }
 
     private String getCuaca(String kota) throws Exception {
@@ -63,7 +63,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
     }
 
     private void updateComboBox() {
-        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) jComboBox1.getModel();
+        DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) comboFavorit.getModel();
         model.removeAllElements(); // Clear the existing items
 
         // Add "Pilih Kota" as default option
@@ -96,8 +96,8 @@ public class FormCekCuaca extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        inputKota = new javax.swing.JTextField();
+        comboFavorit = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -106,15 +106,15 @@ public class FormCekCuaca extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         cekCuaca = new javax.swing.JButton();
         pilihFavorit = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        textKondisiCuaca = new javax.swing.JTextField();
+        textSuhu = new javax.swing.JTextField();
+        textKelembapan = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelRiwayat = new javax.swing.JTable();
         simpanCSV = new javax.swing.JButton();
         muatCSV = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
+        iconInformasi = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,7 +127,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
 
         jLabel3.setText("Kota Favorit :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bali", "Banjarbaru", "Martapura", "Jakarta", "Banjarmasin", " " }));
+        comboFavorit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bali", "Banjarbaru", "Martapura", "Jakarta", "Banjarmasin", " " }));
 
         jLabel4.setText("Kondisi Cuaca :");
 
@@ -157,16 +157,21 @@ public class FormCekCuaca extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("jTextField2");
+        textKondisiCuaca.setText("jTextField2");
+        textKondisiCuaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textKondisiCuacaActionPerformed(evt);
+            }
+        });
 
-        jTextField3.setText("jTextField3");
+        textSuhu.setText("jTextField3");
 
-        jTextField4.setText("jTextField4");
+        textKelembapan.setText("jTextField4");
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("RIWAYAT CUACA");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelRiwayat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -177,7 +182,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
                 "Kota", "Suhu", "Kondisi", "Kelembaban"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelRiwayat);
 
         simpanCSV.setText("Simpan Ke CSV");
         simpanCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -224,18 +229,18 @@ public class FormCekCuaca extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(inputKota, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(cekCuaca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(textKelembapan, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textSuhu, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(textKondisiCuaca, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(comboFavorit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(pilihFavorit))
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(iconInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(214, 214, 214)
                         .addComponent(simpanCSV)
@@ -253,31 +258,31 @@ public class FormCekCuaca extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputKota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cekCuaca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboFavorit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pilihFavorit))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textKondisiCuaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textSuhu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textKelembapan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(iconInformasi, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(62, 62, 62)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -295,24 +300,24 @@ public class FormCekCuaca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cekCuacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cekCuacaActionPerformed
-        String kota = jTextField1.getText();
+        String kota = inputKota.getText();
         if (!kota.isEmpty()) {
             try {
                 String hasil = getCuaca(kota);
                 String[] data = hasil.split(";");
-                jTextField2.setText(data[0]); // Kondisi
-                jTextField3.setText(data[1]); // Suhu
-                jTextField4.setText(data[2]); // Kelembapan
+                textKondisiCuaca.setText(data[0]); // Kondisi
+                textSuhu.setText(data[1]); // Suhu
+                textKelembapan.setText(data[2]); // Kelembapan
 
                 // Menampilkan ikon cuaca
                 String iconCode = data[3];
                 String iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
                 ImageIcon icon = new ImageIcon(new URL(iconUrl)); // Memuat ikon cuaca dari URL
                 JLabel iconLabel = new JLabel(icon);
-                jLabel11.setIcon(icon); // Menampilkan ikon di JLabel11
+                iconInformasi.setIcon(icon); // Menampilkan ikon di JLabel11
 
                 // Menambah data ke tabel
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                DefaultTableModel model = (DefaultTableModel) tabelRiwayat.getModel();
                 model.addRow(new Object[]{kota, data[0], data[1], data[2]});
 
             } catch (Exception e) {
@@ -325,7 +330,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
 
     private void simpanCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanCSVActionPerformed
         try (FileWriter writer = new FileWriter("cuaca.csv", true)) {
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) tabelRiwayat.getModel();
             for (int i = 0; i < model.getRowCount(); i++) {
                 String data = model.getValueAt(i, 0) + "," +
                               model.getValueAt(i, 1) + "," +
@@ -342,7 +347,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
     private void muatCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muatCSVActionPerformed
         try (BufferedReader reader = new BufferedReader(new FileReader("cuaca.csv"))) {
             String line;
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel model = (DefaultTableModel) tabelRiwayat.getModel();
             model.setRowCount(0);
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
@@ -355,7 +360,7 @@ public class FormCekCuaca extends javax.swing.JFrame {
     }//GEN-LAST:event_muatCSVActionPerformed
 
     private void pilihFavoritActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihFavoritActionPerformed
-        String kota = jTextField1.getText();  // Mengambil input kota dari textfield
+        String kota = inputKota.getText();  // Mengambil input kota dari textfield
     if (!kota.isEmpty() && !isKotaFavorit(kota)) {  // Memeriksa apakah kota belum ada di daftar
         favoritCities.add(kota);  // Menambahkan kota ke daftar kota favorit
         updateComboBox();  // Memperbarui ComboBox
@@ -364,6 +369,10 @@ public class FormCekCuaca extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Kota sudah ada di daftar favorit atau tidak ada nama kota!");
     }
     }//GEN-LAST:event_pilihFavoritActionPerformed
+
+    private void textKondisiCuacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textKondisiCuacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textKondisiCuacaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -402,10 +411,11 @@ public class FormCekCuaca extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cekCuaca;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboFavorit;
+    private javax.swing.JLabel iconInformasi;
+    private javax.swing.JTextField inputKota;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -416,13 +426,12 @@ public class FormCekCuaca extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton muatCSV;
     private javax.swing.JButton pilihFavorit;
     private javax.swing.JButton simpanCSV;
+    private javax.swing.JTable tabelRiwayat;
+    private javax.swing.JTextField textKelembapan;
+    private javax.swing.JTextField textKondisiCuaca;
+    private javax.swing.JTextField textSuhu;
     // End of variables declaration//GEN-END:variables
 }
